@@ -72,7 +72,7 @@ def decard_n():
 
 def dictionare():
     print("Колличество элементов словоря: ")
-    number = get_int()
+    number = int(input("Введите значение: "))
     dict = {}
     for i in range(1, number + 1):
         dict[i] = 3 * i + 1
