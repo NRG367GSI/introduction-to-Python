@@ -112,13 +112,13 @@ def output_matrix(seq):
 
 def mix_matrix(seq):
     output_matrix(seq)
-    
-    rows_index = [i for i in range(len(seq[0]))]
-    columns_index = [j for j in range(len(seq))]
+    rows_index = []
+    columns_index = []
+    for i in range(len(seq)):
+    	for j in range(len(seq[i])):
+    		rows_index.append(i)
+    		columns_index.append(j)
     for i in range(int((len(seq) * len(seq[0]))/2)):
-        print(i, rows_index, columns_index)
-        
-
         rows_1 = random.choice(rows_index)
         rows_index.pop(rows_index.index(rows_1))
 
@@ -133,6 +133,7 @@ def mix_matrix(seq):
         temp = seq[rows_1][columns_1]
         seq[rows_1][columns_1] = seq[rows_2][columns_2]
         seq[rows_2][columns_2] = temp
+    print("Результат перемешивания матреци: ")
     output_matrix(seq)
         
     
