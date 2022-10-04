@@ -106,48 +106,36 @@ def get_sequence(): # Создает матрицу, заполненную сл
             seq[i][j] = random.randint(min, max)  
     return seq
 
-def preparation_sequence(seq):
-    max = 0
-    for i in seq:
-        for j in i:
-            if max < len(str(j)):
-                max = len(str(j))    
-    string_matrix = []
-    for k in seq:
-        del(string_seq)
-        string_seq = []
-        for l in seq:
-            if len(l) < max:
-                string_seq.append(str(l) + " ")
-                if str("-") not in l:
-                    string_seq.append(" " + str(l))
-            else:
-                string_seq.append(str(l))
-        string_matrix.append(string_seq)
-    return string_matrix
-
 def output_matrix(seq):
     for i in seq:
         print(i)
 
 def mix_matrix(seq):
     output_matrix(seq)
-    #mix = [[0] * len(seq[0]) for i in range(len(seq))]
-    mix =[]
-    rows = random.choice(seq)
-    index_rows = seq.index(rows)
-
+    
+    rows_index = [i for i in range(len(seq[0]))]
+    columns_index = [j for j in range(len(seq))]
+    for i in range(int((len(seq) * len(seq[0]))/2)):
+        print(i, rows_index, columns_index)
         
-    columns = random.choice(rows)
-    index_columns = rows.index(columns)
-    mix.append(columns)
-    rows.pop(index_columns)
 
-        
-    print(mix)
+        rows_1 = random.choice(rows_index)
+        rows_index.pop(rows_index.index(rows_1))
+
+        columns_1 = random.choice(columns_index)
+        columns_index.pop(columns_index.index(columns_1))
+
+        rows_2 = random.choice(rows_index)
+        rows_index.pop(rows_index.index(rows_2))   
+
+        columns_2 = random.choice(columns_index)
+        columns_index.pop(columns_index.index(columns_2))
+        temp = seq[rows_1][columns_1]
+        seq[rows_1][columns_1] = seq[rows_2][columns_2]
+        seq[rows_2][columns_2] = temp
     output_matrix(seq)
         
-    #output_matrix(mix)
+    
     
 mix_matrix(get_sequence())
 
