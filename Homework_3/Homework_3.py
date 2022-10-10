@@ -20,7 +20,6 @@ def sum_odd_elements(seq): # сумму элементов списка, сто�
 def multiplication_pairs_number(seq): #перемножает пары значений массива
     start_position = 0
     end_position = -1
-    seq2 = seq
     mult = []
     while len(seq) != 0:
         if len(seq) > 1:

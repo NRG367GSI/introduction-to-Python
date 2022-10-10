@@ -1,3 +1,23 @@
+def preparation_sequence(seq):
+    max = 0
+    for i in seq:
+        for j in i:
+            if max < len(str(j)):
+                max = len(str(j))    
+    string_matrix = []
+    for k in seq:
+        del(string_seq)
+        string_seq = []
+        for l in seq:
+            if len(l) < max:
+                string_seq.append(str(l) + " ")
+                if str("-") not in l:
+                    string_seq.append(" " + str(l))
+            else:
+                string_seq.append(str(l))
+        string_matrix.append(string_seq)
+    return string_matrix
+
 '''
 from fractions import Fraction 
 a = Fraction(1)/Fraction(3)
@@ -41,12 +61,19 @@ print(list)
 
 '''
 def least_multiple(a, b):
-    for number in range(2, b):
+    for number in range(2, a):
         if a%number == 0 and b%number == 0:
             print(number)
             break
+        else:
+            print("значение не найдено")
 
 least_multiple(30, 120)
+
+def fibonaci(first_number = 0, second_number = 1):
+    summ = first_number + second_number
+
+
 
 
 

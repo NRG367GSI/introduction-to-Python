@@ -252,7 +252,8 @@ EasyGUI предоставляет лучший способ обработки 
 Когда возникает исключение, exceptionbox () отобразит трассировку стека в codebox ()
 и позволит вам выполнить дальнейшую обработку.
 '''
-try :
-    int("abc")
-except:
-    gui.exceptionbox()
+# try :
+#     int("abc")
+# except:
+#     gui.exceptionbox()
+
