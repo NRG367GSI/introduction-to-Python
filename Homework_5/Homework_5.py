@@ -52,8 +52,6 @@ def game(candy, user_took, computer_took):
 
 # задача 2. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
 # Входные и выходные данные хранятся в отдельных текстовых файлах.
-
-
 def packing(line):
 	arr = []
 	count = 1
@@ -74,8 +72,6 @@ def packing(line):
 			result.append(arr)
 	return result
 	
-#print(packing(line))
-
 def unpacking(arr):
 	text = ""
 	for i in arr:
@@ -92,11 +88,20 @@ def save(BD):
 		saves.write(json.dumps(BD, ensure_ascii=False))
 		print("База данных сохранена!")
 
-
-
 #save(packing(open_file()))
 
-print(unpacking(open_file()))
+#print(unpacking(open_file()))
+
+# задача 3. Напишите программу, удаляющую из текста все слова, содержащие "абв".
+def serch_text(line):
+	if 'абв' in line:
+		return False
+	else:
+		return True
+	
+lin = 'лыолы абв оуллв абвооко'.split()
+a = list(filter(serch_text, lin))
+print(serch_text(lin), a)
 	
 		
 
