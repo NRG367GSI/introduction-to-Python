@@ -3,12 +3,8 @@ def condition(meaning):
         return True
     else:
         return False
-
-
-
-expression = "25+51i * (3+4i-5+6i)/(8+7i)"
-
         
+
 
 def without_spaces(expression):
     
@@ -17,37 +13,7 @@ def without_spaces(expression):
     for i in separation:
         new_expression += i
     return new_expression
-
-def complex_eval(expression):
-    line = ""
-    separation = []
-    operation = "+-*/"
-
     
-    if "(" in expression:
-        index_start = expression.find("(")
-        index_end = expression.find(")")
-        brackets = expression[index_start + 1:index_end]
-    print(expression[:index_start], expression[index_start + 1:index_end], expression[index_end + 1:], expression)
-  
-
-
-
-#print(complex_eval(without_spaces(expression)))
-
-def complex_num1(seq):
-    num_compl = []
-    
-    if "i" in seq:
-        index_i = seq.find("i")
-        index_plus = seq.find("+")
-        num_compl.append(int(seq[:index_plus]))
-        num_compl.append(int(seq[index_plus + 1:index_i]))
-        seq = seq[index_i + 1:]
-        print(num_compl, seq)
-    
-#complex_num(without_spaces(expression))
-
 def pars(seq):
     operation = "+-*/()"
     str = ""
@@ -58,20 +24,31 @@ def pars(seq):
             str = str[:-1]
             arr.append(str)
             arr.append(seq[i])
-            str =""
-            
+            str = ""
+            while "" in arr:
+            	arr.remove("")
     return arr
-
-#pars(without_spaces(expression))
-
+    '''
+def del_s(arr):
+    
+    return arr    
+    '''
 def complex_num(seq):
     oper = "+-*/()"
     operation = "+-"
     lin = []
     compl = []
-    for i in range(len(seq)):
-        
-        if seq[i] in operation and "i" in seq[i+1]:
+    #print(seq)
+    for i in range(len(seq) - 1):
+    	if seq[i] in oper:
+    		#print(seq[i])
+    		#compl.append(seq[i])
+    		
+    		lin.append(seq[i])
+    		#compl = []
+    		#print(lin)
+    		
+    	if seq[i] in operation and "i" in seq[i+1]:
             compl.append(seq[i - 1])
             
             
@@ -79,8 +56,9 @@ def complex_num(seq):
             compl.append(seq[i + 1])
             lin.append(compl)
             compl = []
- 
-    print(lin, seq)
+            
+            
+    print(lin)
 '''          
             
         if seq[i] in oper:
@@ -88,13 +66,6 @@ def complex_num(seq):
 '''
             
 
-
+expression = "(25+51i * (3+4i-5+6i))/(8+7i)"
+#print(pars(without_spaces(expression)))
 complex_num(pars(without_spaces(expression)))
-
-
-
-
-        
-
-
-
