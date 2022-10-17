@@ -5,12 +5,8 @@ operator = ['+','-','*','/']
 # if i in chisla
 # chislo_1 = int(i)
 def calc(stroka):
-    if stroka.find('(') >=0: #if '+' in stroka
-        return calc(stroka[stroka.find('(') + 1:]), calc(stroka[stroka.find(')')-1:])
-    if stroka.find(')') >=0: #if '+' in stroka
-        return calc(stroka[:stroka.find(')')]), calc(stroka[stroka.find(')')+1:])
-
-
+    if '(' in stroka:
+        return calc(stroka[stroka.find('(')+1:stroka.find(')')])
     if stroka.find('+') >=0: #if '+' in stroka
         return calc(stroka[:stroka.find('+')]) + calc(stroka[stroka.find('+')+1:])
     if stroka.find('-') >=0: #if '+' in stroka
@@ -21,3 +17,9 @@ def calc(stroka):
         return calc(stroka[:stroka.find('/')]) / calc(stroka[stroka.find('/')+1:])
     return int(stroka)
 print(calc(stroka))
+
+def brecket(stroka):
+    if '(' in stroka:
+        return calc(stroka[stroka.find('(')+1:stroka.find(')')])
+
+#print(brecket(stroka))

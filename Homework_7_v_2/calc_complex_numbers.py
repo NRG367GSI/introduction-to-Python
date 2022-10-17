@@ -79,7 +79,7 @@ def complex_num(seq):
             compl.append(seq[i + 1])
             lin.append(compl)
             compl = []
-            del seq[i-1:i+1]
+ 
     print(lin, seq)
 '''          
             
