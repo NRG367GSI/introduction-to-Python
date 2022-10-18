@@ -1,71 +1,12 @@
-def condition(meaning):
-    if meaning == " ":
-        return True
-    else:
-        return False
-        
+import user_interface as ui
+def calc_compiex(expression):
+    try: 
+        return eval(expression)
+    except NameError:
+        return "Неправильный запрос (400)"
+    except ZeroDivisionError:
+        return "Деление на ноль"
+    except ValueError:
+        return "ValueError"
 
-
-def without_spaces(expression):
-    
-    new_expression = ""
-    separation = expression.split()
-    for i in separation:
-        new_expression += i
-    return new_expression
-    
-def pars(seq):
-    operation = "+-*/()"
-    str = ""
-    arr = []
-    for i in range(len(seq)):
-        str += seq[i]
-        if seq[i] in operation:
-            str = str[:-1]
-            arr.append(str)
-            arr.append(seq[i])
-            str = ""
-            while "" in arr:
-            	arr.remove("")
-    return arr
-    '''
-def del_s(arr):
-    
-    return arr    
-    '''
-def complex_num(seq):
-    oper = "+-*/()"
-    operation = "+-"
-    lin = []
-    compl = []
-    #print(seq)
-    for i in range(len(seq) - 1):
-    	if seq[i] in oper:
-    		#print(seq[i])
-    		#compl.append(seq[i])
-    		
-    		lin.append(seq[i])
-    		#compl = []
-    		#print(lin)
-    		
-    	if seq[i] in operation and "i" in seq[i+1]:
-            compl.append(seq[i - 1])
-            
-            
-            seq[i + 1] = seq[i + 1][:-1]
-            compl.append(seq[i + 1])
-            lin.append(compl)
-            compl = []
-            
-            
-    print(lin)
-'''          
-            
-        if seq[i] in oper:
-            lin.append(seq[i])
-'''
-            
-
-expression = "(25+51i * (3+4i-5+6i))/(8+7i)"
-#print(pars(without_spaces(expression)))
-complex_num(pars(without_spaces(expression)))
+print(calc_compiex(input("введите выражение")))#ui.user_input()))

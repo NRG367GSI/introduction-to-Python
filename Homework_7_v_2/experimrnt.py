@@ -1,25 +1,15 @@
 stroka=input('Введите числа: ')
-chisla = ['0','1','2','3','4','5','6','7','8','9']
-operator = ['+','-','*','/']
-# # for i in range(len(stroka))
-# if i in chisla
-# chislo_1 = int(i)
-def calc(stroka):
-    if '(' in stroka:
-        return calc(stroka[stroka.find('(')+1:stroka.find(')')])
-    if stroka.find('+') >=0: #if '+' in stroka
-        return calc(stroka[:stroka.find('+')]) + calc(stroka[stroka.find('+')+1:])
-    if stroka.find('-') >=0: #if '+' in stroka
-        return calc(stroka[:stroka.find('-')]) - calc(stroka[stroka.find('-')+1:])
-    if stroka.find('*') >=0: #if '+' in stroka
-        return calc(stroka[:stroka.find('*')]) * calc(stroka[stroka.find('*')+1:])
-    if stroka.find('/') >=0: #if '+' in stroka
-        return calc(stroka[:stroka.find('/')]) / calc(stroka[stroka.find('/')+1:])
-    return int(stroka)
+def calc(expression):
+    if '(' in expression:
+        return calc(expression[expression.find('(')+1:expression.find(')')])
+    if expression.find('+') >=0: #if '+' in stroka
+        return calc(expression[:expression.find('+')]) + calc(expression[expression.find('+')+1:])
+    if expression.find('-') >=0: #if '+' in stroka
+        return calc(expression[:expression.find('-')]) - calc(expression[expression.find('-')+1:])
+    if expression.find('*') >=0: #if '+' in stroka
+        return calc(expression[:expression.find('*')]) * calc(expression[expression.find('*')+1:])
+    if expression.find('/') >=0: #if '+' in stroka
+        return calc(expression[:expression.find('/')]) / calc(expression[expression.find('/')+1:])
+    return int(expression)
 print(calc(stroka))
 
-def brecket(stroka):
-    if '(' in stroka:
-        return calc(stroka[stroka.find('(')+1:stroka.find(')')])
-
-#print(brecket(stroka))
