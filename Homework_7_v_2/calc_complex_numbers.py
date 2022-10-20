@@ -1,5 +1,4 @@
-import user_interface as ui
-def calc_compiex(expression):
+def complex_calc(expression):
     try: 
         return eval(expression)
     except NameError:
@@ -9,4 +8,3 @@ def calc_compiex(expression):
     except ValueError:
         return "ValueError"
 
-print(calc_compiex(input("введите выражение")))#ui.user_input()))

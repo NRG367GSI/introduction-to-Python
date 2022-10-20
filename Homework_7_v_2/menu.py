@@ -1,7 +1,5 @@
-import calc_rational_numbers as rational
-import calc_complex_numbers as complex
+import controller as cr
 import loger as lg
-import user_interface as ui
 
 def menu():
     menu = ["1", "2", "0"]
@@ -20,21 +18,14 @@ def menu():
             print("\n-----------------------------------------------")
             print("Выбран режим для работы с рациональными числами")
             print("-----------------------------------------------\n")
-            input_data = ui.user_input()
-            result = rational.operatyon(input_data)
-            string_to_write = f"{input_data} = {str(result)}"
-            lg.write(string_to_write)
-            print(f"Ответ: {result}\n")
+            cr.control_calc()
+            
 
         elif point == "2":
             print("\n----------------------------------------------")
             print("Выбран режим для работы с комплексными числами")
             print("----------------------------------------------\n")
-            input_data = ui.user_input()
-            result = complex.operatyon(input_data)
-            string_to_write = f"{input_data} = {str(result)}"
-            lg.write(string_to_write)
-            print(f"Ответ: {result}")
+            cr.control_complex_calc()
 
         elif point == "3":
             lg.read()
@@ -47,3 +38,5 @@ def menu():
             print("Некорректный ввод, попробуйте еще раз!")
             print("--------------------------------------\n")
         point = None
+
+menu()

@@ -1,4 +1,4 @@
-def user_input():
+def get_expression():
     meaning = ""
     while meaning == "":
         meaning = input("Введите арифметические действия: ")
@@ -7,3 +7,5 @@ def user_input():
         
     return meaning
 
+def view_data(data, title):
+    print(f'{title} = {data}')

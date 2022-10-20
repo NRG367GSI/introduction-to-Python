@@ -1,15 +1,20 @@
-import user_interface as ui
+
+#expression = ""
+def init(line):
+    global expression
+    expression = line
+
 def calc(expression):
     try:  
         if '(' in expression:
             return calc(expression[expression.find('(')+1:expression.find(')')])
-        if expression.find('+') >=0: #if '+' in stroka
+        if expression.find('+') >=0:
             return calc(expression[:expression.find('+')]) + calc(expression[expression.find('+')+1:])
-        if expression.find('-') >=0: #if '+' in stroka
+        if expression.find('-') >=0:
             return calc(expression[:expression.find('-')]) - calc(expression[expression.find('-')+1:])
-        if expression.find('*') >=0: #if '+' in stroka
+        if expression.find('*') >=0:
             return calc(expression[:expression.find('*')]) * calc(expression[expression.find('*')+1:])
-        if expression.find('/') >=0: #if '+' in stroka
+        if expression.find('/') >=0:
             return calc(expression[:expression.find('/')]) / calc(expression[expression.find('/')+1:])
         return float(expression)
     except NameError:
@@ -18,5 +23,3 @@ def calc(expression):
         return "Деление на ноль"
     except ValueError:
         return "ValueError"
-
-print(calc(input("введите выражение")))#ui.user_input()))
