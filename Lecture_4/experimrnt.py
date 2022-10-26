@@ -83,4 +83,7 @@ def complex_num(seq):
 
 expression = "(25+51i * (3+4i-5+6i))/(8+7i)"
 #print(pars(without_spaces(expression)))
-complex_num(pars(without_spaces(expression)))
+#complex_num(pars(without_spaces(expression)))
+
+day = [i for i in range(1, 31)]
+print(day)
