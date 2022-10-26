@@ -6,7 +6,7 @@ import gui_input_output as gio
 def add_data():
     full_name = gio.input_name()
     students = {}
-    if None in sd.search_name(full_name[0].capitalize(), full_name[1].capitalize()):
+    if sd.search_name(full_name[0].capitalize(), full_name[1].capitalize()) == None:
         students['surname'] = full_name[0].capitalize()
         students['name'] = full_name[1].capitalize()
     
