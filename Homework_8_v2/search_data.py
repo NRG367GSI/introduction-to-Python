@@ -6,7 +6,6 @@ def search_name(sur_name, name):
         for i in data:
             if i["surname"] == sur_name and i["name"] == name: #sur_name in i['surname'] and name in i["name"]:#
                 collection.append(i)
-                print(collection)
                 return collection
     else:
         return None
