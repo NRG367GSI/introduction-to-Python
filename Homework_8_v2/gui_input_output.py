@@ -5,8 +5,8 @@ def output(lin):
     result = ""
     for i in lin:
         for j in i:
-            if len(i[j]) < 10:
-                sum += str(" " * int((10 - len(i[j]))/2)) + str(i[j]) + str(" " * int((10 - len(i[j]))/2))
+            if len(i[j]) < 12:
+                sum += str(" " * int((12 - len(i[j]))/2)) + str(i[j]) + str(" " * int((12 - len(i[j]))/2))
         result += sum + "\n"
         sum = ""
     return result
@@ -89,6 +89,8 @@ def exist():
 
 def del_print():
     return  gui.msgbox(msg ="Удалние прошло успешно!",  title ="Окно информации")
+
+
 
 
 

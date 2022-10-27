@@ -9,7 +9,7 @@ def open_file():
 
 
 def save():
-    bd = []
+    bd = [{"surname": "Фамилия", "name": "Имя", "hb": ["Дата рождния"], "class": ["Класс"], "status": "Оценки"}]
     with open('BD.json', 'w', encoding = 'utf-8') as saves:
 		    saves.write(json.dumps(bd, ensure_ascii=False))
 
