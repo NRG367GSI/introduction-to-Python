@@ -3,6 +3,7 @@ import working_with_database as wwd
 import search_data as sd
 import gui_input_output as gio
 import user_input as ui
+import loger as lg
 
 def list_file(): # Список всех учеников
     if wwd.open_file() != None:
@@ -20,7 +21,6 @@ def name_search():
         surname = full_name[0]
         name = full_name[1]
         quesion = sd.search_name(surname, name)
-        #arr.append(quesion)
         if quesion == None:
             return gio.none_output()
         else:
@@ -53,29 +53,22 @@ def performance_serch():
 def add_record():
     add = ui.add_data()
     if add != None:
+        lg.write('Добавлен',add)
         return gio.addad()
     else:
         return gio.exist()
 
 def deleted():
     name = gio.input_name()
-    
     oper = wwd.deleting(name[0], name[1])
     if oper != None:
+        lg.write('Удален',oper)
         return gio.del_print()
     else:
         return gio.none_output()
 
-
-
-
-
-
-
-
-
-
- 
-            
- 
-            
+def read_log():
+    if lg.read() != None:
+        gio.output(lg.read())
+    else:
+        gio.none_output()
