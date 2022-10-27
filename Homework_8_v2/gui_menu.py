@@ -10,7 +10,7 @@ def submenu(): # Функция меню для удобного переход�
     elif point == "Поиск по дат рождения": gui.msgbox(cr.birthdey_search())
     elif point == "Список учащихся класса": gui.msgbox(cr.grade_search())
     elif point == "Успеваймость": gui.msgbox(cr.performance_serch())
-    elif point == "Назад в меню": return "beack"
+    elif point == "Назад в меню": return point
 
 
 
@@ -22,10 +22,3 @@ def menu(): # Функция меню для удобного перехода �
 	if point == "Поиск с опцыямя": submenu()
 	if point == "Добавить запись": cr.add_record()
 	if point == "Удалить Запись": cr.deleted()
-    
-menu()
-
-
-'''
-4. Выход
-'''

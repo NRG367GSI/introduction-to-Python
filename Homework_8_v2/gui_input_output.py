@@ -6,7 +6,7 @@ def output(lin):
     for i in lin:
         for j in i:
             if len(i[j]) < 12:
-                sum += str(" " * int((12 - len(i[j]))/2)) + str(i[j]) + str(" " * int((12 - len(i[j]))/2))
+                sum += str(str(i[j])) + str(" " * int((18 - len(str(i[j])))))
         result += sum + "\n"
         sum = ""
     return result
