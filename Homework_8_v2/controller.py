@@ -59,7 +59,6 @@ def add_record():
 
 def deleted():
     name = gio.input_name()
-    
     oper = wwd.deleting(name[0], name[1])
     if oper != None:
         return gio.del_print()
