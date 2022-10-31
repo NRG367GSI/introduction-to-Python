@@ -29,51 +29,107 @@ def game_ower(field):
 	else:
 		return False
 
-def draw(x):
-	seq = [str(i) for i in range(1, 10)]
-	print(seq, x)
-	seq.remove(x)
-	if len(seq) == 0:
-		print(seq)
+def draw(arr):
+	seq = len(arr) * len(arr[0])
+	x = 0
+	o = 0
+	for i in arr:
+		for j in i:
+			if j == "X":
+				x += 1
+			if j == "O":
+				o += 1
+	if seq - x - o == 0:
 		return True
-		# else:
-		# 	return False
+	else:
+		return False
+
+def first_player(arr):
+	x = ""
+	user = "X"
+	while x == "":
+		x = input("Ваш ход: ")
+		if x in arr[0] or x in arr[1] or x in arr[2]:
+			for i in range(len(arr)):
+				for j in range(len(arr[i])):
+					
+					if arr[i][j] == x:
+						arr[i][j] = user
+		else:
+			x = ""
+
+
+def exp(arr):
+	name = {}
+	seq = []
+	summ3 =""
+	summ4 = ""
+	arr[1][1] = "X"
+	for i in range(3):
+		summ1 = ""
+		summ2 = ""
+		for j in range(3):
+			name[arr[i][j]] 
+			summ1 += arr[i][j]
+			summ2 += arr[j][i]
+		seq.append(summ1)
+		seq.append(summ2)
+	for k in range(3):
+		summ3 += arr[k][k]
+		summ4 += arr[k][2 - k]
+	
+	seq.append(summ3)
+	seq.append(summ4)
+
+	return seq
+
+
+
+#print(exp(playing_field()))
+#перебор по элементам
+def al(seq):
+	v1_o = 0
+	v1_x = 0
+	
+	name = {}
+	for i in range(len(seq)):
+		for j in range(len(seq[i])):
+			index = []
+			index.append(i)
+			index.append(j)
+			name[seq[i][j]] = index
+		
+	print(name)
+
+al(playing_field())
+
+
+
+
+
+
+
+
 
 
 		
 
-def first_player(arr):
-	seq = [str(i) for i in range(1, (len(arr) * len(arr[0])+ 1))]
-	x = ""
-	user = "X"
-	while x == "" or x not in list(seq):
-		x = input("Ваш ход: ")
-		for i in range(len(arr)):
-			for j in range(len(arr[i])):
-				if arr[i][j] == x:
-					print(x)
-					#seq.remove(x)
-					
-					arr[i][j] = user
-					#print(arr)
-	return x
+	
 
 def second_player(arr):
-	seq = [str(i) for i in range(1, (len(arr) * len(arr[0])+ 1))]
 	x = ""
 	user = "O"
-	while x == "" or x not in list(seq):
+	while x == "":
 		x = input("Ваш ход: ")
-		for i in range(len(arr)):
-			for j in range(len(arr[i])):
-				if arr[i][j] == x:
-					print(x)
-					#seq.remove(x)
-					arr[i][j] = user
-					#print(arr)
-	return x
-
-#output_field(playing_field())
+		if x in arr[0] or x in arr[1] or x in arr[2]:
+			for i in range(len(arr)):
+				for j in range(len(arr[i])):
+					if arr[i][j] == x:
+						arr[i][j] = user
+		else:
+			x = ""
+				
+				
 
 def lottery():
 	input("Кидает кубик игрок, 1 нажмите Enter")
@@ -88,25 +144,19 @@ def lottery():
 	else:
 		return "O"
 
-
 def step_x(maps):
 	print("Ход игрока 1: ")
 	output_field(maps)
 	first_player(maps)
 	return maps
-#output_field(step_x(playing_field()))
 
 def step_o(maps):
 	print("Ход игрока 2: ")
 	output_field(maps)
 	second_player(maps)
 	return maps
-#output_field(step_x(playing_field()))
-	
-
 
 def game():
-	index = 9
 	lot = lottery()
 	cond = False
 	maps = playing_field()
@@ -114,40 +164,9 @@ def game():
 		while cond != True:
 			print("Ход игрока 1: ")
 			output_field(maps)
-			step = first_player(maps)
+			first_player(maps)
 			
 
-			cond = game_ower(maps)
-			if cond == True:
-				print("Игра окончена, победил игрок 1")
-				output_field(maps)
-				break
-			print("Ход игрока 2: ")
-			output_field(maps)
-			step = second_player(maps)
-			cond = game_ower(maps)
-			if cond == True:
-				print("Игра окончена, победил игрок 2")
-				output_field(maps)
-				break
-			dr = draw(step)
-			if dr == True:
-				output_field(maps)
-				print("Ничья!")
-				break
-	else:
-		while cond != True:
-			print("Ход игрока 2: ")
-			output_field(maps)
-			step = second_player(maps)
-			cond = game_ower(maps)
-			if cond == True:
-				print("Игра окончена, победил игрок 2")
-				output_field(maps)
-				break
-			print("Ход игрока 1: ")
-			output_field(maps)
-			step = first_player(maps)
 			cond = game_ower(maps)
 			if cond == True:
 				print("Игра окончена, победил игрок 1")
@@ -158,7 +177,50 @@ def game():
 				output_field(maps)
 				print("Ничья!")
 				break
+			print("Ход игрока 2: ")
+			output_field(maps)
+			second_player(maps)
+			cond = game_ower(maps)
+			if cond == True:
+				print("Игра окончена, победил игрок 2")
+				output_field(maps)
+				break
+			al(maps)
+			dr = draw(maps)
+			if dr == True:
+				output_field(maps)
+				print("Ничья!")
+				break
+	else:
+		while cond != True:
+			print("Ход игрока 2: ")
+			output_field(maps)
+			second_player(maps)
+			cond = game_ower(maps)
+			if cond == True:
+				print("Игра окончена, победил игрок 2")
+				output_field(maps)
+				break
+			dr = draw(maps)
+			if dr == True:
+				output_field(maps)
+				print("Ничья!")
+				break
+			print("Ход игрока 1: ")
+			output_field(maps)
+			first_player(maps)
+			cond = game_ower(maps)
+			if cond == True:
+				print("Игра окончена, победил игрок 1")
+				output_field(maps)
+				break
+			al(maps)
+			dr = draw(maps)
+			if dr == True:
+				output_field(maps)
+				print("Ничья!")
+				break
 
-game()
+#game()
 
 
