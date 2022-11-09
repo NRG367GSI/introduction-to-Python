@@ -13,12 +13,18 @@ def start(message):
 '''
 В меню кнобки
 menu = ["Список всех учеников", "Поиск с опцыямя", "Добавить запись", "Просмотр истории", "Удалить Запись"]
+добавить, 
 '''
 
 @bot.message_handler(commands=['view'])
 def view(message):
     cr.list_file()
     bot.send_message(message.chat.id, cr.list_file())
+
+@bot.message_handler(commands=['add'])
+def add(message):
+    
+    bot.send_message(message.chat.id, cr.add_record())
 
 
 
