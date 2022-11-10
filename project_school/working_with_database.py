@@ -1,9 +1,12 @@
+import os.path
 import json
 def open_file():
     try:
-        with open("BD.json", "r", encoding="utf-8") as file:
-            data = json.load(file)
-            return data
+        if os.path.exists("BD.json"): # проверям существует ли вообще файл
+            with open("BD.json", "r", encoding="utf-8") as file:
+                data = json.load(file)
+                return data
+        else: return None
     except FileNotFoundError:
         return None
 

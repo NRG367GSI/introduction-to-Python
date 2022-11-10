@@ -1,11 +1,11 @@
 import working_with_database as wwd
 def search_name(sur_name, name):
     data = wwd.open_file()
-    for i in data:
-        if i["surname"] == sur_name and i["name"] == name:
-            return i
-        else:
-            return None
+    if data != None: #проверяем если по чему итерироваться, если нет то возращаем что ничего нет
+        for i in data:
+            if i["surname"] == sur_name and i["name"] == name:
+                return i
+    return None
 
 def search_birthday(day):
     data = wwd.open_file()
