@@ -60,10 +60,16 @@ def deleting_data_in_db_step(message):
   bot.send_message(message.chat.id, 'Запись успешно удалена!✅')
 
 
+
 @bot.message_handler(commands=['view'])
 def view(message):
   cr.list_file()
   bot.send_message(message.chat.id, cr.list_file())
+
+@bot.message_handler(commands=['add'])
+def add(message):
+    
+    bot.send_message(message.chat.id, cr.add_record())
 
 
 @bot.message_handler(commands=['search'])
