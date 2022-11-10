@@ -7,10 +7,7 @@ API_TOKEN = '5426760478:AAFaaDf7G9X421DPaqCNwuTWmwN_tA_xm1E'
 bot = telebot.TeleBot(API_TOKEN)
 record = {}
 
-'''
-В меню кнобки
-menu = ["Список всех учеников", "Поиск с опцыямя", "Добавить запись", "Просмотр истории", "Удалить Запись"]
-'''
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
   mess = f' Информационная система запущена\n' \
@@ -53,6 +50,19 @@ def status_step(message):
   record['status'] = message.text
   wwd.add_in_file(record)
   bot.send_message(message.chat.id, 'Запись успешно добавлена!✅')
+
+
+@bot.message_handler(commands=['delete'])
+def start_message(message):
+  msg = bot.send_message(message.chat.id,
+                         'Напишите фамилию и имя ученика которого хотите удалить из списка 🗑')
+  bot.register_next_step_handler(msg, deleting_data_in_db_step)
+
+
+def deleting_data_in_db_step(message):
+  wwd.deleting(message.text)
+  bot.send_message(message.chat.id, 'Запись успешно удалена!✅')
+
 
 @bot.message_handler(commands=['view'])
 def view(message):
