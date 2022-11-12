@@ -25,14 +25,14 @@ def add_cmd(message):
 def name_step(message):
   global record
   record['name'] = message.text
-  msg = bot.send_message(message.chat.id, 'Введите дату рождения⬇️')
+  msg = bot.send_message(message.chat.id, 'Введите дату рождения (дд.мм.гггг)⬇️')
   bot.register_next_step_handler(msg, birthday_step)
 
 def birthday_step(message):
   global record
   record['hb'] = message.text
   msg = bot.send_message(message.chat.id,
-                         'Введите номер класса⬇️')
+                         'Введите номер класса (пример: 3А)⬇️')
   bot.register_next_step_handler(msg, class_step)
 
 def class_step(message):
@@ -90,7 +90,7 @@ def search(message):
 @bot.callback_query_handler(func=lambda c:True)
 def inline(c):
   if c.data == 'NumberOne':
-    msg = bot.send_message(c.message.chat.id, 'Напишите фамилию и имя ученика которого хотите')
+    msg = bot.send_message(c.message.chat.id, 'Напишите фамилию и имя ученика которого хотите найти')
     bot.register_next_step_handler(msg, search_name_step)
   if c.data == 'NumberTwo':
     msg = bot.send_message(c.message.chat.id, 'Введите дату рождения по которой по которой хотите начать поиск')
