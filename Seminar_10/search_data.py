@@ -8,9 +8,17 @@ def search_name_in_db(name):
     for i in data:
       if i["name"] == name:
         collection.append(i)
-        return collection
+        sum = ""
+        result = ""
+        for i in collection:
+          for j in i:
+            if len(i[j]) < 18:
+              sum += str(str(i[j])) + str(" " * int((18 - len(str(i[j])))))
+          result += sum + "\n"
+          sum = ""
+    return result
   else:
-    return None
+    return 'Такой ученик не найден'
 
 
 def search_birthday_in_db(day):
@@ -20,9 +28,17 @@ def search_birthday_in_db(day):
     if day == i["hb"]:
       collection.append(i)
   if len(collection) != 0:
-    return collection
+    sum = ""
+    result = ""
+    for i in collection:
+      for j in i:
+        if len(i[j]) < 18:
+          sum += str(str(i[j])) + str(" " * int((18 - len(str(i[j])))))
+      result += sum + "\n"
+      sum = ""
+    return result
   else:
-    return None
+    return 'По такой дате рождения никто не найден'
 
 
 def search_class_in_db(grade):
@@ -32,9 +48,17 @@ def search_class_in_db(grade):
     if grade in i["class"]:
       collection.append(i)
   if len(collection) != 0:
-    return collection
+    sum = ""
+    result = ""
+    for i in collection:
+      for j in i:
+        if len(i[j]) < 18:
+          sum += str(str(i[j])) + str(" " * int((18 - len(str(i[j])))))
+      result += sum + "\n"
+      sum = ""
+    return result
   else:
-    return None
+    return 'Такого класса нет'
 
 
 def search_status_in_db(status):
@@ -44,6 +68,14 @@ def search_status_in_db(status):
     if status in i["status"]:
       collection.append(i)
   if len(collection) != 0:
-    return collection
+    sum = ""
+    result = ""
+    for i in collection:
+      for j in i:
+        if len(i[j]) < 18:
+          sum += str(str(i[j])) + str(" " * int((18 - len(str(i[j])))))
+      result += sum + "\n"
+      sum = ""
+    return result
   else:
-    return None
+    return 'С такой успеваемостью никто не найден'
